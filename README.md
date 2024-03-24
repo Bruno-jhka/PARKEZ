@@ -1,16 +1,13 @@
-# parkez
+# Parkez
 
-A new Flutter project.
+Parkez é um aplicativo de reservas de vaga online para estabelecimentos, permitindo que os usuários reservem vagas de estacionamento com facilidade e conveniência.
 
-## Getting Started
+## Recursos
 
-This project is a starting point for a Flutter application.
+- **Reserva Online**: Os usuários podem facilmente reservar uma vaga de estacionamento através do aplicativo, garantindo sua vaga com antecedência.
 
-A few resources to get you started if this is your first Flutter project:
+- **Localização**: O aplicativo fornece informações sobre a localização dos estabelecimentos e as vagas de estacionamento disponíveis, facilitando a escolha do local mais conveniente para o usuário.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Notificações**: Os usuários recebem notificações sobre suas reservas, incluindo lembretes e confirmações, garantindo uma experiência tranquila e sem complicações.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Pagamento Seguro**: O aplicativo oferece opções de pagamento seguro para as reservas, proporcionando tranquilidade aos usuários durante o processo de reserva.
