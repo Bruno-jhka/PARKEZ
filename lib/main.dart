@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:parkez/about_page.dart';
 import 'package:parkez/app_Controller.dart';
 import 'package:parkez/home_page.dart';
+import 'package:parkez/setting_page.dart';
+import 'package:parkez/user_page.dart';
 import 'login_page.dart';
 
 void main() {
@@ -25,7 +28,10 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/':(context) => LoginPage(),
-            '/home':(context) => HomePage()
+            '/home':(context) => HomePage(),
+            '/user':(context) => ProfilePage(),
+            '/settings':(context) => SettingsPage(),
+            '/about':(context) => AboutPage()
           },
         );
       },

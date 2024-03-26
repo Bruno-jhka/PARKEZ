@@ -48,12 +48,12 @@ class LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'img/download.png',
+              'img/Logo.png',
               width: 100, // Adjust the size as needed
               height: 100, // Adjust the size as needed
             ),
             Image.asset(
-              'img/download2.png',
+              'img/Logo2.png',
               width: 300, // Adjust the size as needed
               height: 100, // Adjust the size as needed
             ),
@@ -110,8 +110,8 @@ class LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        if(email == 'admin' && password == 'admin'){
-                          Navigator.of(context).pushNamed('/home'); //pushReplacementNamed para substituir a tela e não apenas se sobrepor (tirar a seta)
+                        if(true){
+                          Navigator.of(context).pushReplacementNamed('/home'); //pushReplacementNamed para substituir a tela e não apenas se sobrepor (tirar a seta)
                         }
                       },
                       child: Text(

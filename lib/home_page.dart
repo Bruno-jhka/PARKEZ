@@ -1,52 +1,219 @@
 import 'package:flutter/material.dart';
 import 'package:parkez/app_Controller.dart';
 import 'package:parkez/login_page.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // AppBar customizations would go here
-        title: Text('Bem-vindo ao Parkez'),
+        title: Center(
+          child: Image.asset(
+            'img/Logo2.png',
+            width: 300, // Adjust the size as needed
+            height: 100, // Adjust the size as needed
+          ),
+        ),
+        // Adicionando o ícone do menu de hambúrguer
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
       ),
       body: _buildBody(),
-      bottomNavigationBar: _buildBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBody() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Seja bem-vindo ao Parkez!',
-              style: TextStyle(fontSize: 24),
+     // Drawer para o menu de hambúrguer:
+drawer: Drawer(
+  child: Column(
+    children: <Widget>[
+      Expanded(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Usuário',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
             ),
-            // You can add more widgets here for additional content
+            ListTile(
+              title: Text('Perfil'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/user');
+              },
+            ),
+            ListTile(
+              title: Text('Configurações'),
+              onTap: () {
+                // Ação quando "Configurações" é selecionado
+                Navigator.pop(context); // Fecha o Drawer
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+            ListTile(
+              title: Text('Sobre o App'),
+              onTap: () {
+                // Ação quando "Sobre o App" é selecionado
+                Navigator.pop(context); // Fecha o Drawer
+                Navigator.pushNamed(context, '/about');
+              },
+            ),
           ],
         ),
       ),
+      Divider(),
+      ListTile(
+        title: Row(
+          children: [
+            Icon(
+              AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
+              color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
+            ),
+            SizedBox(width: 8),
+            Text(AppController.instance.isDarkTheme ? 'Modo Escuro' : 'ModoClaro'),
+            Expanded(child: Container()),
+            CustomSwitch(),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return Padding(
-      padding: EdgeInsets.all(90.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
-            color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
-          ),
-          SizedBox(width: 8), // Adiciona um espaçamento entre o ícone e o CustomSwitch
-          CustomSwitch(),
-        ],
+Widget _buildBody() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        'Novidades Parkez!',
+        style: TextStyle(fontSize: 24),
       ),
-    );
-  }
+      Expanded(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: CarouselSlider(
+                items: [
+                  Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1nFeVHvCJ7mWSCMe-JKZKZbYMp6QVBK0zDw&usqp=CAU'),
+                  Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxNPyk-rK2tpmdsBec0_w8DeMEmpgXC6QDow&usqp=CAU'),
+                  Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdFv4DRXP5uVM0V1O-HhAHps7n0PaH4cfvAA&usqp=CAU'),
+                ],
+                options: CarouselOptions(
+                  height: 200.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 1,
+                ),
+              ),
+            ),
+            Container(
+              color: AppController.instance.isDarkTheme ? Colors.grey[900] : Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Pesquisar...',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: 10), // Espaçamento entre a barra de pesquisa e as sugestões
+            Text(
+              'Sugestões:',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 10), // Espaçamento entre o texto "Sugestões:" e as imagens
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Image.asset('img/boladeouro.jpg', 
+                  width: 50, 
+                  height: 100,),
+                ),
+                SizedBox(width: 10), // Espaçamento entre as imagens
+                Expanded(
+                  child: Image.asset('img/champions.jpg',
+                  width: 50, 
+                  height: 100,),
+                ),
+                SizedBox(width: 10), // Espaçamento entre as imagens
+                Expanded(
+                  child: Image.asset('img/copadomundo.jpg',
+                  width: 50, 
+                  height: 100,),
+                ),
+              ],
+            ),
+            Spacer(),
+            Container(
+              color: Colors.blue,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        icon: Icon(Icons.home),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacementNamed('/');
+                        },
+                      ),
+                    ),
+                  ),
+                   Expanded(
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        icon: Icon(Icons.account_circle),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/user');
+                        },
+                      ),
+                    ),
+                  ),
+                 Expanded(
+                  child: Builder(
+                    builder: (context) => IconButton(
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/settings');
+                        // Implemente a navegação para a tela de Configurações
+                      },
+                    ),
+                  ),
+                ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+
+
 }
