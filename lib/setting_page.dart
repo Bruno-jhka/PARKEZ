@@ -58,7 +58,48 @@ class SettingsPage extends StatelessWidget {
               },
             ),
             Divider(),
+            ListTile(
+              title: Text('Sobre o App'),
+              onTap: () {
+                Navigator.pushNamed(context, '/about');
+              },
+            ),
+            Divider(),
             // Adicione mais configurações conforme necessário
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 45,
+        color: AppController.instance.isDarkTheme ? Colors.grey[900] : Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: IconButton(
+                icon: Icon(Icons.home),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/home');
+                },
+              ),
+            ),
+            Expanded(
+              child: IconButton(
+                icon: Icon(Icons.account_circle),
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/user');
+                },
+              ),
+            ),
+            Expanded(
+              child: IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/settings');
+                  // Implemente a navegação para a tela de Configurações
+                },
+              ),
+            ),
           ],
         ),
       ),

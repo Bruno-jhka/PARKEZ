@@ -66,9 +66,9 @@ flutter:
   assets:
      - img/Logo.png
      - img/Logo2.png
-     - img/boladeouro.jpg
-     - img/champions.jpg
-     - img/copadomundo.jpg
+     - img/coreuburguer.jpg
+     - img/pizzaria.jpg
+     - img/sushi.jpg
     
   #   - images/a_dot_ham.jpeg
 

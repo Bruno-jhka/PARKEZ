@@ -66,8 +66,42 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
+        Spacer(), // Movido para dentro do Column
+        Container(
+          height: 45,
+          color: AppController.instance.isDarkTheme ? Colors.grey[900] : Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/home');
+                  },
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Icon(Icons.account_circle),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/user');
+                  },
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/settings');
+                    // Implemente a navegação para a tela de Configurações
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
 }
-

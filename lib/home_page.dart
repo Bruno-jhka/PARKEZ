@@ -65,29 +65,6 @@ drawer: Drawer(
                 Navigator.pushNamed(context, '/settings');
               },
             ),
-            ListTile(
-              title: Text('Sobre o App'),
-              onTap: () {
-                // Ação quando "Sobre o App" é selecionado
-                Navigator.pop(context); // Fecha o Drawer
-                Navigator.pushNamed(context, '/about');
-              },
-            ),
-          ],
-        ),
-      ),
-      Divider(),
-      ListTile(
-        title: Row(
-          children: [
-            Icon(
-              AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
-              color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
-            ),
-            SizedBox(width: 8),
-            Text(AppController.instance.isDarkTheme ? 'Modo Escuro' : 'ModoClaro'),
-            Expanded(child: Container()),
-            CustomSwitch(),
           ],
         ),
       ),
@@ -139,7 +116,7 @@ Widget _buildBody() {
                 ),
               ),
             ),
-            SizedBox(height: 10), // Espaçamento entre a barra de pesquisa e as sugestões
+            SizedBox(height: 200), // Espaçamento entre a barra de pesquisa e as sugestões
             Text(
               'Sugestões:',
               style: TextStyle(fontSize: 20),
@@ -149,27 +126,28 @@ Widget _buildBody() {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  child: Image.asset('img/boladeouro.jpg', 
+                  child: Image.asset('img/coreuburguer.jpg', 
                   width: 50, 
-                  height: 100,),
+                  height: 80,),
                 ),
                 SizedBox(width: 10), // Espaçamento entre as imagens
                 Expanded(
-                  child: Image.asset('img/champions.jpg',
+                  child: Image.asset('img/pizzaria.jpg',
                   width: 50, 
-                  height: 100,),
+                  height: 80,),
                 ),
                 SizedBox(width: 10), // Espaçamento entre as imagens
                 Expanded(
-                  child: Image.asset('img/copadomundo.jpg',
+                  child: Image.asset('img/sushi.jpg',
                   width: 50, 
-                  height: 100,),
+                  height: 80,),
                 ),
               ],
             ),
             Spacer(),
             Container(
-              color: Colors.blue,
+              height: 45,
+              color: AppController.instance.isDarkTheme ? Colors.grey[900] : Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -188,7 +166,7 @@ Widget _buildBody() {
                       builder: (context) => IconButton(
                         icon: Icon(Icons.account_circle),
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/user');
+                          Navigator.of(context).pushReplacementNamed('/user');
                         },
                       ),
                     ),
@@ -198,7 +176,7 @@ Widget _buildBody() {
                     builder: (context) => IconButton(
                       icon: Icon(Icons.settings),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/settings');
+                        Navigator.pushReplacementNamed(context, '/settings');
                         // Implemente a navegação para a tela de Configurações
                       },
                     ),

@@ -45,7 +45,8 @@ class LoginPageState extends State<LoginPage> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start, // Alinha o conteúdo ao topo
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               'img/Logo.png',
@@ -58,7 +59,7 @@ class LoginPageState extends State<LoginPage> {
               height: 100, // Adjust the size as needed
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 0.3,
+              width: MediaQuery.of(context).size.width * 0.7,
               child: TextField(
                 onChanged: (text){
                       email=text;
@@ -72,7 +73,7 @@ class LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 10),
             Container(
-              width: MediaQuery.of(context).size.width * 0.3,
+              width: MediaQuery.of(context).size.width * 0.7,
               child: Stack(
                 alignment: Alignment.centerRight,
                 children: [
@@ -99,14 +100,14 @@ class LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 30),
             Center(
               child: Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 15,
                 children: [
                   Container(
-                    width: 150,
+                    width: 140,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
@@ -124,7 +125,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    width: 150,
+                    width: 140,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
@@ -139,7 +140,7 @@ class LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 80),
+                  SizedBox(height: 70),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -167,8 +168,8 @@ class LoginPageState extends State<LoginPage> {
   }
 
  Widget _buildBottomNavigationBar() {
-  return Padding(
-    padding: EdgeInsets.all(90.0),
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -182,5 +183,6 @@ class LoginPageState extends State<LoginPage> {
     ),
   );
 }
+
 
 }
