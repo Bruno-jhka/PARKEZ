@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:parkez/about_page.dart';
 import 'package:parkez/app_Controller.dart';
 import 'package:parkez/home_page.dart';
+import 'package:parkez/search_page.dart';
 import 'package:parkez/setting_page.dart';
+import 'package:parkez/singup_page.dart';
 import 'package:parkez/user_page.dart';
 import 'login_page.dart';
 
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
             '/home':(context) => HomePage(),
             '/user':(context) => ProfilePage(),
             '/settings':(context) => SettingsPage(),
-            '/about':(context) => AboutPage()
+            '/about':(context) => AboutPage(),
+            '/search':(context) => SearchPage(),
+            '/signup':(context) => RegisterPage()
           },
         );
       },

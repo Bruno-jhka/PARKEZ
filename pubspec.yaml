@@ -69,6 +69,13 @@ flutter:
      - img/coreuburguer.jpg
      - img/pizzaria.jpg
      - img/sushi.jpg
+     - img/carrosel1.png
+     - img/carrosel2.png
+     - img/carrosel3.png
+     - img/academia.png
+     - img/shopping.jpg
+     - img/estacionamento.jpg
+     - img/bk.png
     
   #   - images/a_dot_ham.jpeg
 

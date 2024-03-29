@@ -1,41 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:parkez/app_Controller.dart';
-import 'package:parkez/home_page.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  State<LoginPage> createState() {
-    return LoginPageState();
+  State<RegisterPage> createState() {
+    return RegisterPageState();
   }
 }
 
-class CustomSwitch extends StatelessWidget {
-  const CustomSwitch({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-      value: AppController.instance.isDarkTheme, 
-      onChanged: (value) {
-        AppController.instance.changeTheme();
-
-      },
-    );
-  }
-}
-
-class LoginPageState extends State<LoginPage> {
+class RegisterPageState extends State<RegisterPage> {
   bool _obscureText = true;
   String email = '';
   String password = '';
-  String errorMessage = ''; // Variável para armazenar a mensagem de erro
+  String confirmPassword = '';
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // AppBar customizations would go here
-      ),
+      appBar: AppBar(),
       body: _buildBody(),
     );
   }
@@ -45,25 +28,25 @@ class LoginPageState extends State<LoginPage> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start, // Alinha o conteúdo ao topo
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               'img/Logo.png',
-              width: 100, // Adjust the size as needed
-              height: 100, // Adjust the size as needed
+              width: 100,
+              height: 100,
             ),
             Image.asset(
               'img/Logo2.png',
-              width: 300, // Adjust the size as needed
-              height: 100, // Adjust the size as needed
+              width: 300,
+              height: 100,
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: TextField(
-                onChanged: (text){
-                      email=text;
-                    },
+                onChanged: (text) {
+                  email = text;
+                },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: 'Email',
@@ -78,8 +61,8 @@ class LoginPageState extends State<LoginPage> {
                 alignment: Alignment.centerRight,
                 children: [
                   TextField(
-                    onChanged: (text){
-                      password=text;
+                    onChanged: (text) {
+                      password = text;
                     },
                     obscureText: _obscureText,
                     decoration: InputDecoration(
@@ -89,7 +72,7 @@ class LoginPageState extends State<LoginPage> {
                   ),
                   IconButton(
                     icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
                     ),
                     onPressed: () {
                       setState(() {
@@ -100,6 +83,27 @@ class LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
+            SizedBox(height: 10),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: TextField(
+                onChanged: (text) {
+                  confirmPassword = text;
+                },
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  labelText: 'Confirm Password',
+                  prefixIcon: Icon(Icons.lock),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            errorMessage.isNotEmpty
+                ? Text(
+                    errorMessage,
+                    style: TextStyle(color: Colors.red),
+                  )
+                : SizedBox(), // Se não houver mensagem de erro, exibe um SizedBox
             SizedBox(height: 30),
             Center(
               child: Wrap(
@@ -111,36 +115,21 @@ class LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                      if (true) {
-                        Navigator.of(context).pushReplacementNamed('/home');
-                      } else {
-                        setState(() {
-                          errorMessage = 'E-mail ou senha inválidos'; // Define a mensagem de erro
-                        });
-                      }
-                    },
+                        if (password == confirmPassword) {
+                          // Perform registration action
+                          Navigator.of(context).pushReplacementNamed('/');
+                        } else {
+                          setState(() {
+                            errorMessage = 'Passwords do not match';
+                          });
+                        }
+                      },
                       child: Text(
-                        'Login',
+                        'Register',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 140,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                         Navigator.of(context).pushReplacementNamed('/signup');
-                      },
-                      child: Text(
-                        'Cadastre-se',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 30, 45, 187),
                       ),
                     ),
                   ),
@@ -150,10 +139,10 @@ class LoginPageState extends State<LoginPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // Adicione aqui a lógica para navegar para a tela de redefinição de senha
+                          Navigator.of(context).pushReplacementNamed('/');
                         },
                         child: Text(
-                          'Esqueceu a senha?',
+                          'Already have an account? Login here',
                           style: TextStyle(
                             color: Colors.blue,
                             decoration: TextDecoration.underline,
@@ -161,7 +150,7 @@ class LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -170,23 +159,4 @@ class LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
- Widget _buildBottomNavigationBar() {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
-          color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
-        ),
-        SizedBox(width: 8), // Adiciona um espaçamento entre o ícone e o CustomSwitch
-        CustomSwitch(),
-      ],
-    ),
-  );
-}
-
-
 }

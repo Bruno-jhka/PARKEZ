@@ -71,7 +71,7 @@ class SettingsPage extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         height: 45,
-        color: AppController.instance.isDarkTheme ? Colors.grey[900] : Colors.white,
+        color: AppController.instance.isDarkTheme ? Colors.grey[950] : Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -84,6 +84,17 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             Expanded(
+                      child: Builder(
+                        builder: (context) => IconButton(
+                          icon: Icon(Icons.search),
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(context, '/search');
+                            // Implemente a navegação para a tela de Configurações
+                          },
+                        ),
+                      ),
+                    ),
+            Expanded(
               child: IconButton(
                 icon: Icon(Icons.account_circle),
                 onPressed: () {
@@ -94,10 +105,7 @@ class SettingsPage extends StatelessWidget {
             Expanded(
               child: IconButton(
                 icon: Icon(Icons.settings),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/settings');
-                  // Implemente a navegação para a tela de Configurações
-                },
+                onPressed: () {},
               ),
             ),
           ],
