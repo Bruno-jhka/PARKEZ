@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
                   title: Text(_searchResults[index]),
                   onTap: () {
                     _addToHistory(_searchResults[index]);
-                    // Implemente a ação ao selecionar um resultado de pesquisa
+                    Navigator.of(context).pushNamed('/bk');
                   },
                 );
               },
