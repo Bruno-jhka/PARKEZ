@@ -46,7 +46,7 @@ class _SearchPageState extends State<SearchPage> {
                   onTap: () {
                     // Verifica qual estabelecimento foi selecionado
                     if (_searchResults[index] == 'Buguer King') {
-                      Navigator.of(context).pushNamed('/bk');
+                      Navigator.of(context).pushNamed('/estabelecimentos/bk');
                     } else if (_searchResults[index] == 'Estacionamento Mineirao') {
                       Navigator.of(context).pushNamed('/estabelecimentos/estacionamento');
                     }else if (_searchResults[index] == 'Academia Pratique') {

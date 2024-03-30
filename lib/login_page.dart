@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkez/app_Controller.dart';
-import 'package:parkez/home_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -114,10 +114,7 @@ class LoginPageState extends State<LoginPage> {
                       onPressed: () {
                       if (true) {
                         Navigator.of(context).pushReplacementNamed('/home');
-                      } else {
-                        setState(() {
-                          errorMessage = 'E-mail ou senha inválidos'; // Define a mensagem de erro
-                        });
+                                          
                       }
                     },
                       child: Text(
