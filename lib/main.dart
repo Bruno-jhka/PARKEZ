@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:parkez/about_page.dart';
 import 'package:parkez/app_Controller.dart';
-import 'package:parkez/bk_page.dart';
+import 'package:parkez/estabelecimentos/academia_page.dart';
+import 'package:parkez/estabelecimentos/bk_page.dart';
+import 'package:parkez/estabelecimentos/estacionamento_Page.dart';
+import 'package:parkez/estabelecimentos/shopping_page.dart';
 import 'package:parkez/home_page.dart';
 import 'package:parkez/search_page.dart';
 import 'package:parkez/setting_page.dart';
@@ -37,7 +40,10 @@ class MyApp extends StatelessWidget {
             '/about':(context) => AboutPage(),
             '/search':(context) => SearchPage(),
             '/signup':(context) => RegisterPage(),
-            '/bk': (context) => BurgerKingReservationPage()
+            '/estabelecimentos/bk': (context) => BKPageReserve(),
+            '/estabelecimentos/estacionamento':(context) => EstacionamentoPageReserve(),
+            '/estabelecimentos/pratique':(context) => PratiquePageReserve(),
+            '/estabelecimentos/shopping':(context) => ShoppingPageReserve()
           },
         );
       },

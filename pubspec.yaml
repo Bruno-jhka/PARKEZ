@@ -66,16 +66,24 @@ flutter:
   assets:
      - img/Logo.png
      - img/Logo2.png
-     - img/coreuburguer.jpg
-     - img/pizzaria.jpg
-     - img/sushi.jpg
-     - img/carrosel1.png
-     - img/carrosel2.png
-     - img/carrosel3.png
-     - img/academia.png
-     - img/shopping.jpg
-     - img/estacionamento.jpg
-     - img/bk.png
+     ##sugestões
+     - img/sugestoes/coreuburguer.jpg
+     - img/sugestoes/pizzaria.jpg
+     - img/sugestoes/sushi.jpg
+     #carrosel
+     - img/carrosel/carrosel1.png
+     - img/carrosel/carrosel2.png
+     - img/carrosel/carrosel3.png
+     #historico
+     - img/historico/pratique.jpg
+     - img/historico/shopping.png
+     - img/historico/estacionamento.jpg
+     - img/historico/bk.png
+     #estabelecimentos
+     - img/estabelecimentos/lojabk.jpg
+     - img/estabelecimentos/estacionamento.jpg
+     - img/estabelecimentos/pratique.jpg
+     - img/estabelecimentos/shopping.jpg
     
   #   - images/a_dot_ham.jpeg
 

@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:parkez/app_Controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -30,9 +32,9 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: CarouselSlider(
                   items: [
-                    Image.asset('img/carrosel1.png'),
-                    Image.asset('img/carrosel2.png'),
-                    Image.asset('img/carrosel3.png'),
+                    Image.asset('img/carrosel/carrosel1.png'),
+                    Image.asset('img/carrosel/carrosel2.png'),
+                    Image.asset('img/carrosel/carrosel3.png'),
                   ],
                   options: CarouselOptions(
                     height: 200.0,
@@ -58,15 +60,16 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16.0),
-                  Row(
+               Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      _buildCircularImage('img/estacionamento.jpg'),
-                      _buildCircularImage('img/bk.png'),
-                      _buildCircularImage('img/shopping.jpg'),
-                      _buildCircularImage('img/academia.png'),
+                      _buildCircularImage('img/historico/estacionamento.jpg'),
+                      _buildCircularImage('img/historico/bk.png'),
+                      _buildCircularImage('img/historico/shopping.png'),
+                      _buildCircularImage('img/historico/pratique.jpg'),
                     ],
                   ),
+
                 ],
               ),
               SizedBox(height: 40), // Espaçamento entre a barra de pesquisa e as sugestões
@@ -85,7 +88,7 @@ class HomePage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10), // Define o raio das bordas
                         child: Image.asset(
-                          'img/coreuburguer.jpg',
+                          'img/sugestoes/coreuburguer.jpg',
                           width: 200, // Ajuste o tamanho conforme necessário
                           height: 100, // Ajuste o tamanho conforme necessário
                           fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço disponível
@@ -99,7 +102,7 @@ class HomePage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10), // Define o raio das bordas
                         child: Image.asset(
-                          'img/pizzaria.jpg',
+                          'img/sugestoes/pizzaria.jpg',
                           width: 200, // Ajuste o tamanho conforme necessário
                           height: 100, // Ajuste o tamanho conforme necessário
                           fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço disponível
@@ -113,7 +116,7 @@ class HomePage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10), // Define o raio das bordas
                         child: Image.asset(
-                          'img/sushi.jpg',
+                          'img/sugestoes/sushi.jpg',
                           width: 200, // Ajuste o tamanho conforme necessário
                           height: 100, // Ajuste o tamanho conforme necessário
                           fit: BoxFit.cover, // Ajusta a imagem para preencher o espaço disponível
@@ -135,7 +138,7 @@ class HomePage extends StatelessWidget {
                         builder: (context) => IconButton(
                           icon: Icon(Icons.home),
                           onPressed: () {
-                            Navigator.of(context).pushReplacementNamed('/');
+                            
                           },
                         ),
                       ),

@@ -44,8 +44,18 @@ class _SearchPageState extends State<SearchPage> {
                 return ListTile(
                   title: Text(_searchResults[index]),
                   onTap: () {
+                    // Verifica qual estabelecimento foi selecionado
+                    if (_searchResults[index] == 'Buguer King') {
+                      Navigator.of(context).pushNamed('/bk');
+                    } else if (_searchResults[index] == 'Estacionamento Mineirao') {
+                      Navigator.of(context).pushNamed('/estabelecimentos/estacionamento');
+                    }else if (_searchResults[index] == 'Academia Pratique') {
+                      Navigator.of(context).pushNamed('/estabelecimentos/pratique');
+                    }else if (_searchResults[index] == 'Shopping Contagem') {
+                      Navigator.of(context).pushNamed('/estabelecimentos/shopping');
+                    }
+                    // Adiciona ao histórico
                     _addToHistory(_searchResults[index]);
-                    Navigator.of(context).pushNamed('/bk');
                   },
                 );
               },
@@ -102,7 +112,7 @@ class _SearchPageState extends State<SearchPage> {
   void _search(String query) {
     // Simulação de uma pesquisa em uma base de dados
     List<String> mockData = [
-      'teste' // Apenas um item cadastrado para teste
+      'Buguer King','Academia Pratique','Estacionamento Mineirao', 'Shopping Contagem' // Apenas um item cadastrado para teste
     ];
 
     // Limpa a lista de resultados de pesquisa

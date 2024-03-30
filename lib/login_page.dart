@@ -37,6 +37,7 @@ class LoginPageState extends State<LoginPage> {
         // AppBar customizations would go here
       ),
       body: _buildBody(),
+      bottomNavigationBar: _buildBottomNavigationBar(), 
     );
   }
 
