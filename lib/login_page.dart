@@ -128,7 +128,7 @@ class LoginPageState extends State<LoginPage> {
                         }
                       },
                       child: Text(
-                        'Login',
+                        'Entrar',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
