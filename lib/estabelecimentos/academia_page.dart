@@ -85,7 +85,7 @@ class PratiquePageReserve extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  // Lógica para reservar a vaga
+                  Navigator.pushNamed(context, '/pagamentos');
                 },
                 child: Text('Reservar Vaga'),
               ),

@@ -15,11 +15,11 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -58,16 +58,35 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16.0),
-               Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      _buildCircularImage('img/historico/estacionamento.jpg'),
-                      _buildCircularImage('img/historico/bk.png'),
-                      _buildCircularImage('img/historico/shopping.png'),
-                      _buildCircularImage('img/historico/pratique.jpg'),
-                    ],
-                  ),
-
+                              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/estabelecimentos/estacionamento');
+                      },
+                      child: _buildCircularImage('img/historico/estacionamento.jpg'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/estabelecimentos/bk');
+                      },
+                      child: _buildCircularImage('img/historico/bk.png'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/estabelecimentos/shopping');
+                      },
+                      child: _buildCircularImage('img/historico/shopping.png'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/estabelecimentos/pratique');
+                      },
+                      child: _buildCircularImage('img/historico/pratique.jpg'),
+                    ),
+                  ],
+                )
                 ],
               ),
               SizedBox(height: 40), // Espaçamento entre a barra de pesquisa e as sugestões

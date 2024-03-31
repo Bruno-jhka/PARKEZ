@@ -6,6 +6,7 @@ import 'package:parkez/estabelecimentos/bk_page.dart';
 import 'package:parkez/estabelecimentos/estacionamento_Page.dart';
 import 'package:parkez/estabelecimentos/shopping_page.dart';
 import 'package:parkez/home_page.dart';
+import 'package:parkez/payment_page.dart';
 import 'package:parkez/search_page.dart';
 import 'package:parkez/setting_page.dart';
 import 'package:parkez/singup_page.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
             '/estabelecimentos/bk': (context) => BKPageReserve(),
             '/estabelecimentos/estacionamento':(context) => EstacionamentoPageReserve(),
             '/estabelecimentos/pratique':(context) => PratiquePageReserve(),
-            '/estabelecimentos/shopping':(context) => ShoppingPageReserve()
+            '/estabelecimentos/shopping':(context) => ShoppingPageReserve(),
+            '/pagamentos':(context) => PaymentPage()
           },
         );
       },
