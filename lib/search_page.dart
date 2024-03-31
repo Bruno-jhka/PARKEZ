@@ -73,7 +73,7 @@ class _SearchPageState extends State<SearchPage> {
               child: IconButton(
                 icon: Icon(Icons.home),
                 onPressed: () {
-                  Navigator.of(context).pushReplacementNamed('/');
+
                 },
               ),
             ),

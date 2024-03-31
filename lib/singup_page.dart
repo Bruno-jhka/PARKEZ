@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class RegisterPage extends StatefulWidget {
   @override
   State<RegisterPage> createState() {
@@ -19,7 +18,9 @@ class RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: _buildBody(),
+      body: SingleChildScrollView(
+        child: _buildBody(),
+      ),
     );
   }
 
@@ -120,12 +121,12 @@ class RegisterPageState extends State<RegisterPage> {
                           Navigator.of(context).pushReplacementNamed('/');
                         } else {
                           setState(() {
-                            errorMessage = 'Passwords do not match';
+                            errorMessage = 'As senhas devem ser iguais';
                           });
                         }
                       },
                       child: Text(
-                        'Register',
+                        'Registrar',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -142,7 +143,7 @@ class RegisterPageState extends State<RegisterPage> {
                           Navigator.of(context).pushReplacementNamed('/');
                         },
                         child: Text(
-                          'Already have an account? Login here',
+                          'Já tem uma conta? Entre aqui',
                           style: TextStyle(
                             color: Colors.blue,
                             decoration: TextDecoration.underline,

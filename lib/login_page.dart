@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkez/app_Controller.dart';
 
-
 class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() {
@@ -10,7 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class CustomSwitch extends StatelessWidget {
-  const CustomSwitch({super.key});
+  const CustomSwitch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,6 @@ class CustomSwitch extends StatelessWidget {
       value: AppController.instance.isDarkTheme, 
       onChanged: (value) {
         AppController.instance.changeTheme();
-
       },
     );
   }
@@ -36,7 +34,9 @@ class LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         // AppBar customizations would go here
       ),
-      body: _buildBody(),
+      body: SingleChildScrollView(
+        child: _buildBody(),
+      ),
       bottomNavigationBar: _buildBottomNavigationBar(), 
     );
   }
@@ -101,6 +101,13 @@ class LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
+            SizedBox(height: 10),
+            errorMessage.isNotEmpty
+                ? Text(
+                    errorMessage,
+                    style: TextStyle(color: Colors.red),
+                  )
+                : SizedBox(), // Se não houver mensagem de erro, exibe um SizedBox
             SizedBox(height: 30),
             Center(
               child: Wrap(
@@ -112,11 +119,14 @@ class LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                      if (true) {
-                        Navigator.of(context).pushReplacementNamed('/home');
-                                          
-                      }
-                    },
+                        if (email == 'admin' && password == 'admin') {
+                          Navigator.of(context).pushReplacementNamed('/home');
+                        } else {
+                          setState(() {
+                            errorMessage = 'Credenciais inválidas';
+                          });
+                        }
+                      },
                       child: Text(
                         'Login',
                         style: TextStyle(color: Colors.black),
@@ -169,22 +179,20 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
- Widget _buildBottomNavigationBar() {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
-          color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
-        ),
-        SizedBox(width: 8), // Adiciona um espaçamento entre o ícone e o CustomSwitch
-        CustomSwitch(),
-      ],
-    ),
-  );
-}
-
-
+  Widget _buildBottomNavigationBar() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            AppController.instance.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
+            color: AppController.instance.isDarkTheme ? Colors.white : Colors.black,
+          ),
+          SizedBox(width: 8), // Adiciona um espaçamento entre o ícone e o CustomSwitch
+          CustomSwitch(),
+        ],
+      ),
+    );
+  }
 }
